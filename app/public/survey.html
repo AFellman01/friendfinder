@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>FriendFinder</title>
+</head>
+
+<body>
+
+                    <h1>Friend Finder Survey!</h1>
+                    <hr>
+                    <!-- Just questions and I don't know, what? -->
+                    <h2>Find your best friend by answering the questions below.</h2>
+                    <form>
+                        <h4>Name Goes here.</h4>
+                        <input type="text" placeholder=" Name" id="name" class="user-info" required>
+                        <hr>
+                        <h4>Is Romance dead?</h4>
+                        <select class="user-choice" id="q1">
+                            <option value="1">1 (No)</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5 (Yes)</option>
+                        </select>
+                        <h4>Pumpkin is best pie</h4>
+                        <select class="user-choice" id="q2">
+                            <option value="1">1 (False)</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5 (True)</option>
+                        </select>
+                        <h4>Having a clue is overrated</h4>
+                        <select class="user-choice" id="q3">
+                            <option value="1">1 (I don't agree with this statement)</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5 (That's all me, baby)</option>
+                        </select>
+                        <h4>Would you, could you, in a car? You may like them in a tree!</h4>
+                        <select class="user-choice" id="q4">
+                            <option value="1">1 (I would not, could not, in a tree. Not in a car. You let me be.)</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5 (In a car and  in a tree. They are so so good, you see!) </option>
+                        </select>
+                        <h4>Coming up with questions is hard.</h4>
+                        <select class="user-choice" id="q5">
+                            <option value="1">1 (Actually, I find it easy.)</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5 (Man, I know, right?)</option>
+                        </select>
+                        <h4>How much wood could a woodchuck chuck if a woodchuck could chuck wood?</h4>
+                        <select class="user-choice" id="q6">
+                            <option value="1">1 (This is a trick question. Despite the name, woodchucks do not chuck wood.)</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5 (As much wood as a woodchuck could chuck, if a woodchuck could chuck wood!).</option>
+                        </select>
+                        <h4>Wouldn't it be nice if code just compiled itself?</h4>
+                        <select class="user-choice" id="q7">
+                            <option value="1">1 (Coding is life.)</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5 (Yes! Take me to your magical realm of freedom)</option>
+                        </select>
+                        <h4>"Did he fire six shots or only five?" Well to tell you the truth in all this excitement I kinda lost track myself. But being this is a .44 Magnum, the most powerful handgun in the world and would blow your head clean off, you've gotta ask yourself one question: "Do I feel lucky?" Well, do ya, punk?</h4>
+                        <select class="user-choice" id="q8">
+                            <option value="1">1 (No)</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5 (Yes)</option>
+                        </select>
+                        <h4>What are you rebelling against?<h4>
+                        <select class="user-choice" id="q9">
+                            <option value="1">1 (Nothing)</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5 (What have you got?)</option>
+                        </select>
+                        <h4>Is it secret? Is it safe?</h4>
+                        <select class="user-choice" id="q10">
+                            <option value="1">1 (They're taking the hobbits to Isengard!)</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5 (The one ring to rule them all!)</option>
+                        </select>
+                        <br>
+                        <br>
+                        <!-- Submit Button -->
+                        <button type="submit" class="btn btn-primary btn-lg btn-block" id="submit"></i> Press Here!</button>
+                        <hr></form>
+
+    <!-- Results Modal -->
+    <div id="resultsModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal Content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Your new best friend is...</h4>
+                </div>
+                <div class="modal-body">
+                    <h2 id="matchFriendName"></h2>
+                    <img id="matchFriendImg" src="" alt="">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- All Scripts -->
+    <!-- Jquery -->
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
+
+    <script type="text/javascript">
+    // Create an object for the user's data
+    $('#submit').on('click', function(event) {
+        event.preventDefault();
+        //Makes an array of the values of the selected options
+        var userScoresArray = [];
+        $('.user-choice option:selected').each(function() {
+            //Use + for type coercion to convert the number strings to INT numbers
+            userScoresArray.push(parseInt($(this).val()));
+        });
+        var userProfile = {
+            name: $("#name").val(),
+            photo: $("#photo").val(),
+            scores: userScoresArray
+        };
+        // Use AJAX to post the data to the friends API. Somehow. Possibly with witchcraft. I mean, I know this is what it does, but I don't know why it does it or how.
+        $.post("/api/friends", userProfile).done(function(data) {
+            console.log(data);
+            $("#matchFriendName").text(data.name);
+            // Show the modal with the best match
+            $("#resultsModal").modal('toggle');
+        });
+    });
+    </script>
+</body>
+
+</html>
